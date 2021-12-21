@@ -6,18 +6,19 @@ function fetchJsonApi(url) {
 
 function fetchMyJoke() {
   return fetchJsonApi("/jokes");
-} //--> Promise<{ text: '' }>
+}
 
 function fetchApiJoke() {
-  return fetchJsonApi("https://api.chucknorris.io/jokes/random") //
-    .then(function (joke) {
-      return { text: joke.value };
-    });
-} //--> Promise<{ text: '' }>
+  return fetchJsonApi("https://api.chucknorris.io/jokes/random").then(function (
+    joke
+  ) {
+    return { text: joke.value };
+  });
+}
 
 function displayJoke(joke) {
-  const text = joke.text;
-  const jokeDiv = document.createElement("div");
+  let text = joke.text;
+  let jokeDiv = document.createElement("div");
   jokeDiv.className = "joke-div";
   jokeDiv.innerText = text;
   document.querySelector("#joke-panel").append(jokeDiv);

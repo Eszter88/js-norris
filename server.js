@@ -6,12 +6,11 @@ const app = express();
 
 /* itt sajat eroforrast hivunk le, nem kulsot
 //request, response, next nevu function mindig megjelenik,mert a pozicio szamit
-
+*/
 app.use(function (req, res, next) {
   console.log(req.url, req.method);
   next();
 });
-*/
 
 app.get("/jokes", function (req, res) {
   let jokes = [
@@ -20,13 +19,13 @@ app.get("/jokes", function (req, res) {
   ];
 
   let index = Math.floor(Math.random() * jokes.length);
-  return res.json({ text: jokes[index] }); //http responset allit elo, csomagol (nem kibont)
+  return res.json({ text: jokes[index] }); //http responset allit elo, csomagol (itt nem kibont)
 });
 
-app.use(express.static(publicDir));
+app.use(express.static(publicDir)); //index.js style.js mutatja, /jokes nem
 
 app.listen(8080, function () {
   console.log("App is running on 8080");
 });
 
-// consolelog a terminalba logol, nem az inspectben
+// consolelog a node.js-el terminalba logol, nem az inspectbe
